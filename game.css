@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  background: #333;
+  color: #ccc;
+}
+body #x {
+  margin: 0;
+  text-align: center;
+}
