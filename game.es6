@@ -43,7 +43,6 @@ onkeyup=e=>k[e.which]=0
 //movements
 pm=setInterval(_=>{
   //max pwr is 2000
-  pwr<=2000&&pwr++;
   //make sure keydown
   if(Object.getOwnPropertyNames(k).length){
     //player
@@ -52,16 +51,20 @@ pm=setInterval(_=>{
     else{
       //w
       if(k[87]&&map[mR(pr-1)][pc]!=wall)
-        pr=mR(pr-1);
+        pr=mR(pr-1),
+        pwr<=2000&&pwr++;
       //s
       if(k[83]&&map[mR(pr+1)][pc]!=wall)
-        pr=mR(pr+1);
+        pr=mR(pr+1),
+        pwr<=2000&&pwr++;
       //a
       if(k[65]&&map[pr][mC(pc-1)]!=wall)
-        pc=mC(pc-1);
+        pc=mC(pc-1),
+        pwr<=2000&&pwr++;
       //d
       if(k[68]&&map[pr][mC(pc+1)]!=wall)
-        pc=mC(pc+1);
+        pc=mC(pc+1),
+        pwr<=2000&&pwr++;
       //forcefield
       if(k[32])
         pwr-=50,

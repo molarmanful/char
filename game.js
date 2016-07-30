@@ -76,19 +76,18 @@ onkeyup = function onkeyup(e) {
 //movements
 pm = setInterval(function (_) {
   //max pwr is 2000
-  pwr <= 2000 && pwr++;
   //make sure keydown
   if (Object.getOwnPropertyNames(k).length) {
     //player
     if (Die) end();else {
       //w
-      if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1);
+      if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1), pwr <= 2000 && pwr++;
       //s
-      if (k[83] && map[mR(pr + 1)][pc] != wall) pr = mR(pr + 1);
+      if (k[83] && map[mR(pr + 1)][pc] != wall) pr = mR(pr + 1), pwr <= 2000 && pwr++;
       //a
-      if (k[65] && map[pr][mC(pc - 1)] != wall) pc = mC(pc - 1);
+      if (k[65] && map[pr][mC(pc - 1)] != wall) pc = mC(pc - 1), pwr <= 2000 && pwr++;
       //d
-      if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1);
+      if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1), pwr <= 2000 && pwr++;
       //forcefield
       if (k[32]) pwr -= 50, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
         return b = mR(pr + b - 3), [].concat(_toConsumableArray(Array(7).keys())).map(function (c, d) {
