@@ -9,18 +9,19 @@ pc=0
 pr=0
 mc=120
 mr=50
-ec=119
-er=49
+ec=mc/2|0
+er=mr/2|0
 map=Array(mr).fill(Array(mc).fill(floor))
-score=1
+score=0
 die=0
 Die=0
+pwr=1
 mR=x=>((x%mr)+mr)%mr
 mC=x=>((x%mc)+mc)%mc
 
 //update map function
 um=_=>{
-  x.innerHTML=map.map(a=>a.join``).join`\n`.replace(player,`<span style='color:limegreen'>${player}</span>`).replace(enemy,`<span style='color:red'>${enemy}</span>`)+`\n\nScore: `+score/10
+  x.innerHTML=map.map(a=>a.join``).join`\n`.replace(player,`<span style='color:limegreen'>${player}</span>`).replace(enemy,`<span style='color:red'>${enemy}</span>`)+`\n\nScore: ${score/10} | Power: `+pwr
 }
 //update coords functions
 up=(R,C,p)=>map=map.map((a,b)=>a.map((c,d)=>b^R||d^C?c==p?floor:c:p))
@@ -47,6 +48,8 @@ pm=setInterval(_=>{
     if(Die)
       end();
     else{
+      //IT WILL NEVER BE OVER 9000!!!
+      pwr<=9000&&pwr++;
       //w
       if(k[87]&&map[mR(pr-1)][pc]!=wall)
         pr=mR(pr-1);
@@ -61,14 +64,14 @@ pm=setInterval(_=>{
         pc=mC(pc+1);
       //forcefield
       if(k[32])
-        score/=2,score|=0,
+        pwr-=10,
         [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
     }
   }
 
   //enemy
   if(die)
-    er=49,ec=119,die=0,score+=500;
+    er=49,ec=119,die=0,pwr+=50;
   else{
     r=Math.random()*100|0
     //up
@@ -96,7 +99,7 @@ pm=setInterval(_=>{
   //enemy field death
   map[er]&&map[er][ec]==field&&(die=1)
   //player mine death
-  map[pr]&&map[pr][pc]==mine&&(score-=100)
+  map[pr]&&map[pr][pc]==mine&&(pwr-=100)
 
   //update
   up(mR(pr),mC(pc),player)
@@ -109,7 +112,7 @@ sc=setInterval(_=>{score++,um()},100)
 
 //check for deaths
 d=setInterval(_=>{
-  (x.innerHTML.match(player)&&(er^pr||ec^pc)&&score>0)||(Die=1)
+  (x.innerHTML.match(player)&&(er^pr||ec^pc)&&pwr>0)||(Die=1)
 },1)
 
 //game over
