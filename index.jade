@@ -21,6 +21,31 @@ html
       ║ ║ PRESS SPACE TO START ║ ║
       ║ ╚══════════════════════╝ ║
       ╚══════════════════════════╝
+    pre.des.
+      <b>char</b> is a 2D, text-rendered game. You are pitted against one powerful enemy, and your goal is to survive as long as possible.
+      
+      <u><b>THE MAP</b></u>
+      The map wraps around itself, meaning that going off the left edge (for example) will have you end up at the right edge if it is unobstructed by a wall.
+      
+      <u><b>YOU</b></u>
+      You are green. Your score is determined by the amount of seconds you survive. You also have a power level. If your power is ≤0, then you will die and the game will end. You gain 1 power unit every moment up to a maximum power of 2000.
+      You can activate a forcefield that will clear any surrounding walls and force the enemy to respawn if the enemy walks into a field unit. Every activation of the forcefield costs you 50 power units, but every enemy respawn gives you 100 power units.
+      
+      <u><b>THE ENEMY</b></u>
+      The enemy can walk through walls and has the ability to teleport. Each time the enemy teleports, it will change the map layout while doing so. 
+      In addition, it can activate a forcefield of its own that will reduce your power by 100 if you walk into its field unit. A direct encounter with the enemy (meaning that the enemy walks onto the same block as you) reduces your power by 500.
+      
+      <u><b>CONTROLS</b></u>
+       - w       : up
+       - a       : left
+       - s       : down
+       - d       : right
+       - [SPACE] : activate forcefield
+       
+      =================================
+      Links: <a href='https://github.com/molarmanful/char' target='_blank'>Github</a> | <a href='https://github.com/molarmanful' target='_blank'>Author</a>
+      <br>
+      <br>
     script.
       onkeyup=function(e){
         e.which==32&&(location='game.html')

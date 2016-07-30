@@ -3,6 +3,9 @@ body {
   background: #333;
   color: #ccc;
 }
+body a {
+  color: #fff;
+}
 body #x {
   position: absolute;
   top: 50%;
@@ -24,5 +27,14 @@ body .start {
   text-align: center;
   color: #f00;
   text-decoration: none;
+  position: absolute;
+}
+body .des {
+  width: 50%;
+  height: 35%;
+  bottom: 0;
+  left: 25%;
+  white-space: pre-wrap;
+  overflow: auto;
   position: absolute;
 }

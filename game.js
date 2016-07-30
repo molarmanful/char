@@ -79,8 +79,8 @@ pm = setInterval(function (_) {
   if (Object.getOwnPropertyNames(k).length) {
     //player
     if (Die) end();else {
-      //IT WILL NEVER BE OVER 9000!!!
-      pwr <= 9000 && pwr++;
+      //max pwr is 2000
+      pwr <= 2000 && pwr++;
       //w
       if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1);
       //s
@@ -90,7 +90,7 @@ pm = setInterval(function (_) {
       //d
       if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1);
       //forcefield
-      if (k[32]) pwr -= 10, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
+      if (k[32]) pwr -= 50, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
         return b = mR(pr + b - 3), [].concat(_toConsumableArray(Array(7).keys())).map(function (c, d) {
           return d = mC(pc + d - 3), Up(b, d, field);
         });
@@ -99,7 +99,7 @@ pm = setInterval(function (_) {
   }
 
   //enemy
-  if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr += 50;else {
+  if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr += 100;else {
     r = Math.random() * 100 | 0;
     //up
     if (r >= 0 && r < 10) er--;

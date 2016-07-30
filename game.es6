@@ -48,8 +48,8 @@ pm=setInterval(_=>{
     if(Die)
       end();
     else{
-      //IT WILL NEVER BE OVER 9000!!!
-      pwr<=9000&&pwr++;
+      //max pwr is 2000
+      pwr<=2000&&pwr++;
       //w
       if(k[87]&&map[mR(pr-1)][pc]!=wall)
         pr=mR(pr-1);
@@ -64,14 +64,14 @@ pm=setInterval(_=>{
         pc=mC(pc+1);
       //forcefield
       if(k[32])
-        pwr-=10,
+        pwr-=50,
         [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
     }
   }
 
   //enemy
   if(die)
-    ec=mc/2|0,er=mr/2|0,die=0,pwr+=50;
+    ec=mc/2|0,er=mr/2|0,die=0,pwr+=100;
   else{
     r=Math.random()*100|0
     //up
