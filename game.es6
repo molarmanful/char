@@ -48,8 +48,6 @@ pm=setInterval(_=>{
     if(Die)
       end();
     else{
-      //max pwr is 2000
-      pwr<=2000&&pwr++;
       //w
       if(k[87]&&map[mR(pr-1)][pc]!=wall)
         pr=mR(pr-1);
@@ -68,6 +66,9 @@ pm=setInterval(_=>{
         [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
     }
   }
+  if(!Object.getOwnPropertyNames(k).length)
+    //max pwr is 2000
+    pwr<=2000&&pwr++;
 
   //enemy
   if(die)
@@ -87,13 +88,13 @@ pm=setInterval(_=>{
     if(r>=30&&r<40)
       ec++;
     //teleport
-    if(r==50)
+    if(r==50&&score>30)
       er=pr+(Math.random()*3+1)|0*(Math.random()*-2|0),
       ec=pc+(Math.random()*3+1)|0*(Math.random()-2|0),
       map=map.map((a,b)=>a.map((c,d)=>c==floor||c==wall||c==field||c==mine?Math.random()*2|0&&Math.random()*2|0?wall:floor:c));
     //mines!
     if(r==51)
-      [...Array(11).keys()].map((a,b)=>(b=mR(er+b-5),[...Array(11).keys()].map((c,d)=>(d=mC(ec+d-5),Up(b,d,mine)))));
+      [...Array(9).keys()].map((a,b)=>(b=mR(er+b-4),[...Array(9).keys()].map((c,d)=>(d=mC(ec+d-4),Up(b,d,mine)))));
   }
 
   //enemy field death

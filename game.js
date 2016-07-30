@@ -79,8 +79,6 @@ pm = setInterval(function (_) {
   if (Object.getOwnPropertyNames(k).length) {
     //player
     if (Die) end();else {
-      //max pwr is 2000
-      pwr <= 2000 && pwr++;
       //w
       if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1);
       //s
@@ -97,6 +95,9 @@ pm = setInterval(function (_) {
       });
     }
   }
+  if (!Object.getOwnPropertyNames(k).length)
+    //max pwr is 2000
+    pwr <= 2000 && pwr++;
 
   //enemy
   if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr += 100;else {
@@ -110,15 +111,15 @@ pm = setInterval(function (_) {
     //right
     if (r >= 30 && r < 40) ec++;
     //teleport
-    if (r == 50) er = pr + (Math.random() * 3 + 1) | 0 * (Math.random() * -2 | 0), ec = pc + (Math.random() * 3 + 1) | 0 * (Math.random() - 2 | 0), map = map.map(function (a, b) {
+    if (r == 50 && score > 30) er = pr + (Math.random() * 3 + 1) | 0 * (Math.random() * -2 | 0), ec = pc + (Math.random() * 3 + 1) | 0 * (Math.random() - 2 | 0), map = map.map(function (a, b) {
       return a.map(function (c, d) {
         return c == floor || c == wall || c == field || c == mine ? Math.random() * 2 | 0 && Math.random() * 2 | 0 ? wall : floor : c;
       });
     });
     //mines!
-    if (r == 51) [].concat(_toConsumableArray(Array(11).keys())).map(function (a, b) {
-      return b = mR(er + b - 5), [].concat(_toConsumableArray(Array(11).keys())).map(function (c, d) {
-        return d = mC(ec + d - 5), Up(b, d, mine);
+    if (r == 51) [].concat(_toConsumableArray(Array(9).keys())).map(function (a, b) {
+      return b = mR(er + b - 4), [].concat(_toConsumableArray(Array(9).keys())).map(function (c, d) {
+        return d = mC(ec + d - 4), Up(b, d, mine);
       });
     });
   }
