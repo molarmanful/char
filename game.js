@@ -75,6 +75,8 @@ onkeyup = function onkeyup(e) {
 
 //movements
 pm = setInterval(function (_) {
+  //max pwr is 2000
+  pwr <= 2000 && pwr++;
   //make sure keydown
   if (Object.getOwnPropertyNames(k).length) {
     //player
@@ -95,9 +97,6 @@ pm = setInterval(function (_) {
       });
     }
   }
-  if (!Object.getOwnPropertyNames(k).length)
-    //max pwr is 2000
-    pwr <= 2000 && pwr++;
 
   //enemy
   if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr += 100;else {

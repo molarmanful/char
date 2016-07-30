@@ -42,6 +42,8 @@ onkeyup=e=>k[e.which]=0
 
 //movements
 pm=setInterval(_=>{
+  //max pwr is 2000
+  pwr<=2000&&pwr++;
   //make sure keydown
   if(Object.getOwnPropertyNames(k).length){
     //player
@@ -66,9 +68,6 @@ pm=setInterval(_=>{
         [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
     }
   }
-  if(!Object.getOwnPropertyNames(k).length)
-    //max pwr is 2000
-    pwr<=2000&&pwr++;
 
   //enemy
   if(die)
