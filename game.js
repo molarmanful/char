@@ -1,126 +1,155 @@
+var _templateObject = _taggedTemplateLiteral(["\n"], ["\\n"]),
+    _templateObject2 = _taggedTemplateLiteral([""], [""]);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 //init
-floor=` `
-wall=`▓`
-player=`@`
-enemy=`&`
-field=`+`
-mine=`ø`
-pc=0
-pr=0
-mc=120
-mr=50
-ec=mc/2|0
-er=mr/2|0
-map=Array(mr).fill(Array(mc).fill(floor))
-score=0
-die=0
-Die=0
-pwr=1
-mR=x=>((x%mr)+mr)%mr
-mC=x=>((x%mc)+mc)%mc
+var floor = " ";
+wall = "▓";
+player = "@";
+enemy = "&";
+field = "+";
+mine = "ø";
+pc = 0;
+pr = 0;
+mc = 120;
+mr = 50;
+ec = mc / 2 | 0;
+er = mr / 2 | 0;
+map = Array(mr).fill(Array(mc).fill(floor));
+score = 0;
+die = 0;
+Die = 0;
+pwr = 1;
+mR = function mR(x) {
+  return (x % mr + mr) % mr;
+};
+mC = function mC(x) {
+  return (x % mc + mc) % mc;
+};
 
 //update map function
-um=_=>{
-  x.innerHTML=map.map(a=>a.join``).join`\n`.replace(player,`<span style='color:limegreen'>${player}</span>`).replace(enemy,`<span style='color:red'>${enemy}</span>`)+`\n\nScore: ${score/10} | Power: `+pwr
-}
+um = function um(_) {
+  x.innerHTML = map.map(function (a) {
+    return a.join(_templateObject2);
+  }).join(_templateObject).replace(player, "<span style='color:limegreen'>" + player + "</span>").replace(enemy, "<span style='color:red'>" + enemy + "</span>") + ("\n\nScore: " + score / 10 + " | Power: ") + pwr;
+};
 //update coords functions
-up=(R,C,p)=>map=map.map((a,b)=>a.map((c,d)=>b^R||d^C?c==p?floor:c:p))
-Up=(R,C,p)=>map=map.map((a,b)=>a.map((c,d)=>b^R||d^C?c:p))
+up = function up(R, C, p) {
+  return map = map.map(function (a, b) {
+    return a.map(function (c, d) {
+      return b ^ R || d ^ C ? c == p ? floor : c : p;
+    });
+  });
+};
+Up = function Up(R, C, p) {
+  return map = map.map(function (a, b) {
+    return a.map(function (c, d) {
+      return b ^ R || d ^ C ? c : p;
+    });
+  });
+};
 
 //init walls
-map=map.map((a,b)=>a.map((c,d)=>Math.random()*2|0&&Math.random()*2|0?wall:c))
+map = map.map(function (a, b) {
+  return a.map(function (c, d) {
+    return Math.random() * 2 | 0 && Math.random() * 2 | 0 ? wall : c;
+  });
+});
 
 //init map
-up(pr,pc,player)
-up(er,ec,enemy)
-um()
+up(pr, pc, player);
+up(er, ec, enemy);
+um();
 
 //key states
-k={}
-onkeydown=e=>k[e.which]=1
-onkeyup=e=>k[e.which]=0
+k = {};
+onkeydown = function onkeydown(e) {
+  return k[e.which] = 1;
+};
+onkeyup = function onkeyup(e) {
+  return k[e.which] = 0;
+};
 
 //movements
-pm=setInterval(_=>{
+pm = setInterval(function (_) {
   //make sure keydown
-  if(Object.getOwnPropertyNames(k).length){
+  if (Object.getOwnPropertyNames(k).length) {
     //player
-    if(Die)
-      end();
-    else{
+    if (Die) end();else {
       //IT WILL NEVER BE OVER 9000!!!
-      pwr<=9000&&pwr++;
+      pwr <= 9000 && pwr++;
       //w
-      if(k[87]&&map[mR(pr-1)][pc]!=wall)
-        pr=mR(pr-1);
+      if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1);
       //s
-      if(k[83]&&map[mR(pr+1)][pc]!=wall)
-        pr=mR(pr+1);
+      if (k[83] && map[mR(pr + 1)][pc] != wall) pr = mR(pr + 1);
       //a
-      if(k[65]&&map[pr][mC(pc-1)]!=wall)
-        pc=mC(pc-1);
+      if (k[65] && map[pr][mC(pc - 1)] != wall) pc = mC(pc - 1);
       //d
-      if(k[68]&&map[pr][mC(pc+1)]!=wall)
-        pc=mC(pc+1);
+      if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1);
       //forcefield
-      if(k[32])
-        pwr-=10,
-        [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
+      if (k[32]) pwr -= 10, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
+        return b = mR(pr + b - 3), [].concat(_toConsumableArray(Array(7).keys())).map(function (c, d) {
+          return d = mC(pc + d - 3), Up(b, d, field);
+        });
+      });
     }
   }
 
   //enemy
-  if(die)
-    er=49,ec=119,die=0,pwr+=50;
-  else{
-    r=Math.random()*100|0
+  if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr += 50;else {
+    r = Math.random() * 100 | 0;
     //up
-    if(r>=0&&r<10)
-      er--;
+    if (r >= 0 && r < 10) er--;
     //down
-    if(r>=10&&r<20)
-      er++;
+    if (r >= 10 && r < 20) er++;
     //left
-    if(r>=20&&r<30)
-      ec--;
+    if (r >= 20 && r < 30) ec--;
     //right
-    if(r>=30&&r<40)
-      ec++;
+    if (r >= 30 && r < 40) ec++;
     //teleport
-    if(r==50)
-      er=pr+(Math.random()*3+1)|0*(Math.random()*-2|0),
-      ec=pc+(Math.random()*3+1)|0*(Math.random()-2|0),
-      map=map.map((a,b)=>a.map((c,d)=>c==floor||c==wall||c==field||c==mine?Math.random()*2|0&&Math.random()*2|0?wall:floor:c));
+    if (r == 50) er = pr + (Math.random() * 3 + 1) | 0 * (Math.random() * -2 | 0), ec = pc + (Math.random() * 3 + 1) | 0 * (Math.random() - 2 | 0), map = map.map(function (a, b) {
+      return a.map(function (c, d) {
+        return c == floor || c == wall || c == field || c == mine ? Math.random() * 2 | 0 && Math.random() * 2 | 0 ? wall : floor : c;
+      });
+    });
     //mines!
-    if(r==51)
-      [...Array(11).keys()].map((a,b)=>(b=mR(er+b-5),[...Array(11).keys()].map((c,d)=>(d=mC(ec+d-5),Up(b,d,mine)))));
+    if (r == 51) [].concat(_toConsumableArray(Array(11).keys())).map(function (a, b) {
+      return b = mR(er + b - 5), [].concat(_toConsumableArray(Array(11).keys())).map(function (c, d) {
+        return d = mC(ec + d - 5), Up(b, d, mine);
+      });
+    });
   }
 
   //enemy field death
-  map[er]&&map[er][ec]==field&&(die=1)
+  map[er] && map[er][ec] == field && (die = 1);
   //player mine death
-  map[pr]&&map[pr][pc]==mine&&(pwr-=100)
+  map[pr] && map[pr][pc] == mine && (pwr -= 100);
 
   //update
-  up(mR(pr),mC(pc),player)
-  up(mR(er),mC(ec),enemy)
-  um()
-},50)
+  up(mR(pr), mC(pc), player);
+  up(mR(er), mC(ec), enemy);
+  um();
+}, 50);
 
 //scorekeeping
-sc=setInterval(_=>{score++,um()},100)
+sc = setInterval(function (_) {
+  score++, um();
+}, 100);
 
 //check for deaths
-d=setInterval(_=>{
-  (x.innerHTML.match(player)&&(er^pr||ec^pc)&&pwr>0)||(Die=1)
-},1)
+d = setInterval(function (_) {
+  x.innerHTML.match(player) && (er ^ pr || ec ^ pc) && pwr > 0 || (Die = 1);
+}, 1);
 
 //game over
-end=_=>{
-  clearInterval(sc)
-  clearInterval(pm)
-  clearInterval(d)
-  setTimeout(_=>{
-    x.innerHTML=`You died!\n Survived for ${score/10} seconds.\nReload the page to play again.`
-  },2000)
-}
+end = function end(_) {
+  clearInterval(sc);
+  clearInterval(pm);
+  clearInterval(d);
+  setTimeout(function (_) {
+    x.innerHTML = "You died!\n Survived for " + score / 10 + " seconds.\nReload the page to play again.";
+  }, 2000);
+};
