@@ -98,8 +98,12 @@ pm=setInterval(_=>{
 
   //enemy field death
   map[er]&&map[er][ec]==field&&(die=1)
-  //player mine death
-  map[pr]&&map[pr][pc]==mine&&(pwr-=100)
+  //player loses power for stepping on mines
+  map[pr]&&map[pr][pc]==mine&&(pwr-=100),
+  //player loses power for encountering enemy
+  (er==pr&&ec==pc)&&(pwr-=500)
+  //player dies when power <1
+  pwr>0||(Die=1)
 
   //update
   up(mR(pr),mC(pc),player)
@@ -110,16 +114,10 @@ pm=setInterval(_=>{
 //scorekeeping
 sc=setInterval(_=>{score++,um()},100)
 
-//check for deaths
-d=setInterval(_=>{
-  (x.innerHTML.match(player)&&(er^pr||ec^pc)&&pwr>0)||(Die=1)
-},1)
-
 //game over
 end=_=>{
   clearInterval(sc)
   clearInterval(pm)
-  clearInterval(d)
   setTimeout(_=>{
     x.innerHTML=`You died!\n Survived for ${score/10} seconds.\nReload the page to play again.`
   },2000)
