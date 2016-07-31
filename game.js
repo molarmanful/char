@@ -98,7 +98,7 @@ pm = setInterval(function (_) {
   }
 
   //enemy
-  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, die = 0, pwr + 500 < 1000 ? pwr += 500 : pwr = 1000;else {
+  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, die = 0, pwr + 200 < 1000 ? pwr += 200 : pwr = 1000;else {
     r = Math.random() * 100 | 0;
     //up
     if (r >= 0 && r < 10) er--;
@@ -109,7 +109,7 @@ pm = setInterval(function (_) {
     //right
     if (r >= 30 && r < 40) ec++;
     //teleport
-    if (r == 50 && score > 30) er = pr + (Math.random() * 3 + 1) | 0 * (Math.random() * -2 | 0), ec = pc + (Math.random() * 3 + 1) | 0 * (Math.random() - 2 | 0), map = map.map(function (a, b) {
+    if (r == 50 && score > 30) er = pr + (Math.random() * 9 + 1) | 0 * (Math.random() * -2 | 0), ec = pc + (Math.random() * 9 + 1) | 0 * (Math.random() * -2 | 0), map = map.map(function (a, b) {
       return a.map(function (c, d) {
         return c == floor || c == wall || c == field || c == mine ? Math.random() * 2 | 0 && Math.random() * 2 | 0 ? wall : floor : c;
       });
