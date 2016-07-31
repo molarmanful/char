@@ -100,7 +100,7 @@ pm = setInterval(function (_) {
   }
 
   //enemy
-  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, die = 0, pwr + 200 < 1000 ? pwr += 200 : pwr = 1000;else {
+  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, pwr < 800 ? pwr += 200 : pwr = 1000, kills % 10 ? k10 || (k10 = 1, pwr < 500 ? pwr += 500 : pwr = 1000) : k10 = 0, kills++, die = 0;else {
     r = Math.random() * 100 | 0;
     //up
     if (r >= 0 && r < 10) er--;
@@ -125,15 +125,13 @@ pm = setInterval(function (_) {
   }
 
   //enemy field death
-  map[er] && map[er][ec] == field && (die = 1, kills++);
+  map[er] && map[er][ec] == field && (die = 1);
   //player loses power for stepping on mines
   map[pr] && map[pr][pc] == mine && (pwr -= 100),
   //player loses power for encountering enemy
   er == pr && ec == pc && (pwr -= 500);
   //player dies when power <1
   pwr > 0 || (Die = 1);
-  //+500 power every 10 kills
-  kills % 10 && !k10 ? (k10 = 1, pwr += 500) : k10 = 0;
 
   //update
   up(mR(pr), mC(pc), player);
