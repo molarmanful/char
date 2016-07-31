@@ -22,7 +22,7 @@ map = Array(mr).fill(Array(mc).fill(floor));
 score = 0;
 die = 0;
 Die = 0;
-pwr = 1;
+pwr = 1000;
 mR = function mR(x) {
   return (x % mr + mr) % mr;
 };
@@ -96,10 +96,9 @@ pm = setInterval(function (_) {
       });
     }
   }
-  pwr < 2000 && !(k[87] || k[83] || k[65] || k[68]) && pwr++;
 
   //enemy
-  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, die = 0, pwr + 500 < 2000 ? pwr += 500 : pwr = 2000;else {
+  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, die = 0, pwr + 500 < 1000 ? pwr += 500 : pwr = 1000;else {
     r = Math.random() * 100 | 0;
     //up
     if (r >= 0 && r < 10) er--;
@@ -140,7 +139,7 @@ pm = setInterval(function (_) {
 
 //scorekeeping
 sc = setInterval(function (_) {
-  score++, um();
+  score++, pwr--, um();
 }, 100);
 
 //game over

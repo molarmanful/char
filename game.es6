@@ -15,7 +15,7 @@ map=Array(mr).fill(Array(mc).fill(floor))
 score=0
 die=0
 Die=0
-pwr=1
+pwr=1000
 mR=x=>((x%mr)+mr)%mr
 mC=x=>((x%mc)+mc)%mc
 
@@ -67,11 +67,10 @@ pm=setInterval(_=>{
         [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
     }
   }
-  pwr<2000&&!(k[87]||k[83]||k[65]||k[68])&&pwr++
 
   //enemy
   if(die)
-    ec=Math.random()*mc|0,er=Math.random()*mr|0,die=0,pwr+500<2000?(pwr+=500):(pwr=2000);
+    ec=Math.random()*mc|0,er=Math.random()*mr|0,die=0,pwr+500<1000?(pwr+=500):(pwr=1000);
   else{
     r=Math.random()*100|0
     //up
@@ -112,7 +111,7 @@ pm=setInterval(_=>{
 },50)
 
 //scorekeeping
-sc=setInterval(_=>{score++,um()},100)
+sc=setInterval(_=>{score++,pwr--,um()},100)
 
 //game over
 end=_=>{
