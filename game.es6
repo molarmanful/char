@@ -16,6 +16,8 @@ score=0
 die=0
 Die=0
 pwr=1000
+kills=0
+k10=0
 mR=x=>((x%mr)+mr)%mr
 mC=x=>((x%mc)+mc)%mc
 
@@ -96,13 +98,15 @@ pm=setInterval(_=>{
   }
 
   //enemy field death
-  map[er]&&map[er][ec]==field&&(die=1)
+  map[er]&&map[er][ec]==field&&(die=1,kills++)
   //player loses power for stepping on mines
   map[pr]&&map[pr][pc]==mine&&(pwr-=100),
   //player loses power for encountering enemy
   (er==pr&&ec==pc)&&(pwr-=500)
   //player dies when power <1
   pwr>0||(Die=1)
+  //+500 power every 10 kills
+  kills%10&&!k10?(k10=1,pwr+=500):(k10=0)
 
   //update
   up(mR(pr),mC(pc),player)
