@@ -23,12 +23,14 @@ body #y {
   left: 50%;
   transform: translateX(-50%);
   width: 1000px;
-  height: 5px;
+  height: 10px;
   background-color: #ddd;
 }
 body #y #z {
   width: 1000px;
-  height: 5px;
+  height: 10px;
+  font-size: 10px;
+  font-family: Courier New;
   background-color: #008000;
 }
 body .logo {
