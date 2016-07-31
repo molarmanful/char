@@ -91,12 +91,12 @@ pm=setInterval(_=>{
     if(r>=30&&r<40)
       ec++;
     //teleport
-    if(r==50&&score>30)
+    if(r>=50&&r<55&&score>30)
       er=pr+(Math.random()*9)|0*(Math.random()*-2|0),
       ec=pc+(Math.random()*9)|0*(Math.random()*-2|0),
       map=map.map((a,b)=>a.map((c,d)=>c==floor||c==wall||c==field||c==mine?Math.random()*2|0&&Math.random()*2|0?wall:floor:c));
     //mines!
-    if(r==51)
+    if(r==60)
       [...Array(9).keys()].map((a,b)=>(b=mR(er+b-4),[...Array(9).keys()].map((c,d)=>(d=mC(ec+d-4),Up(b,d,mine)))));
   }
 
