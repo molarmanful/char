@@ -94,7 +94,9 @@ pm=setInterval(_=>{
     //teleport
     if(r>=50&&r<55&&score>30)
       er=pr+(Math.random()*9)|0*(Math.random()*-2|0),
-      ec=pc+(Math.random()*9)|0*(Math.random()*-2|0),
+      ec=pc+(Math.random()*9)|0*(Math.random()*-2|0);
+    //map change
+    if(r==55)
       map=map.map((a,b)=>a.map((c,d)=>c==floor||c==wall||c==field||c==mine?Math.random()*2|0&&Math.random()*2|0?wall:floor:c));
     //mines!
     if(r==60)
