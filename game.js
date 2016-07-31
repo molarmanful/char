@@ -1,17 +1,17 @@
-var _templateObject = _taggedTemplateLiteral(["\n"], ["\\n"]),
-    _templateObject2 = _taggedTemplateLiteral([""], [""]);
+var _templateObject = _taggedTemplateLiteral(['\n'], ['\\n']),
+    _templateObject2 = _taggedTemplateLiteral([''], ['']);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 //init
-var floor = " ";
-wall = "▓";
-player = "@";
-enemy = "&";
-field = "+";
-mine = "ø";
+var floor = ' ';
+wall = '▓';
+player = '@';
+enemy = '&';
+field = '+';
+mine = 'ø';
 pc = 0;
 pr = 0;
 mc = 120;
@@ -24,7 +24,7 @@ die = 0;
 Die = 0;
 pwr = 1000;
 kills = 0;
-k10 = 0;
+k5 = 0;
 mR = function mR(x) {
   return (x % mr + mr) % mr;
 };
@@ -36,7 +36,8 @@ mC = function mC(x) {
 um = function um(_) {
   x.innerHTML = map.map(function (a) {
     return a.join(_templateObject2);
-  }).join(_templateObject).replace(player, "<span style='color:limegreen'>" + player + "</span>").replace(enemy, "<span style='color:red'>" + enemy + "</span>") + ("\n\nScore: " + score / 10 + " | Power: ") + pwr;
+  }).join(_templateObject).replace(player, '<span style=\'color:limegreen\'>' + player + '</span>').replace(enemy, '<span style=\'color:red\'>' + enemy + '</span>');
+  z.style.width = (pwr > 0 ? pwr : 0) + 'px';
 };
 //update coords functions
 up = function up(R, C, p) {
@@ -100,7 +101,7 @@ pm = setInterval(function (_) {
   }
 
   //enemy
-  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, pwr < 800 ? pwr += 200 : pwr = 1000, kills % 10 ? k10 || (k10 = 1, pwr < 500 ? pwr += 500 : pwr = 1000) : k10 = 0, kills++, die = 0;else {
+  if (die) ec = Math.random() * mc | 0, er = Math.random() * mr | 0, pwr < 800 ? pwr += 200 : pwr = 1000, kills % 5 ? k5 || (k5 = 1, pwr < 500 ? pwr += 500 : pwr = 1000) : k5 = 0, kills++, die = 0;else {
     r = Math.random() * 100 | 0;
     //up
     if (r >= 0 && r < 10) er--;
@@ -149,6 +150,6 @@ end = function end(_) {
   clearInterval(sc);
   clearInterval(pm);
   setTimeout(function (_) {
-    x.innerHTML = "You died!\n Survived for " + score / 10 + " seconds.\nReload the page to play again.";
+    x.innerHTML = 'You died!\n Survived for ' + score / 10 + ' seconds.\nReload the page to play again.';
   }, 2000);
 };

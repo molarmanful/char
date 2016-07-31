@@ -17,13 +17,14 @@ die=0
 Die=0
 pwr=1000
 kills=0
-k10=0
+k5=0
 mR=x=>((x%mr)+mr)%mr
 mC=x=>((x%mc)+mc)%mc
 
 //update map functions
 um=_=>{
-  x.innerHTML=map.map(a=>a.join``).join`\n`.replace(player,`<span style='color:limegreen'>${player}</span>`).replace(enemy,`<span style='color:red'>${enemy}</span>`)+`\n\nScore: ${score/10} | Power: `+pwr
+  x.innerHTML=map.map(a=>a.join``).join`\n`.replace(player,`<span style='color:limegreen'>${player}</span>`).replace(enemy,`<span style='color:red'>${enemy}</span>`)
+  z.style.width=(pwr>0?pwr:0)+'px'
 }
 //update coords functions
 up=(R,C,p)=>map=map.map((a,b)=>a.map((c,d)=>b^R||d^C?c==p?floor:c:p))
@@ -74,7 +75,7 @@ pm=setInterval(_=>{
   if(die)
     ec=Math.random()*mc|0,er=Math.random()*mr|0,
     pwr<800?(pwr+=200):(pwr=1000),
-    kills%10?k10||(k10=1,pwr<500?(pwr+=500):(pwr=1000)):(k10=0),
+    kills%5?k5||(k5=1,pwr<500?(pwr+=500):(pwr=1000)):(k5=0),
     kills++,die=0;
   else{
     r=Math.random()*100|0

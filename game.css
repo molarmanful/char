@@ -17,6 +17,20 @@ body #x {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+body #y {
+  bottom: 1%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 5px;
+  background-color: #ddd;
+}
+body #y #z {
+  width: 1000px;
+  height: 5px;
+  background-color: #008000;
+}
 body .logo {
   color: #32cd32;
   position: absolute;
