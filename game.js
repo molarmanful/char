@@ -30,7 +30,7 @@ mC = function mC(x) {
   return (x % mc + mc) % mc;
 };
 
-//update map function
+//update map functions
 um = function um(_) {
   x.innerHTML = map.map(function (a) {
     return a.join(_templateObject2);
@@ -81,13 +81,13 @@ pm = setInterval(function (_) {
     //player
     if (Die) end();else {
       //w
-      if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1), pwr <= 2000 && pwr++;
+      if (k[87] && map[mR(pr - 1)][pc] != wall) pr = mR(pr - 1);
       //s
-      if (k[83] && map[mR(pr + 1)][pc] != wall) pr = mR(pr + 1), pwr <= 2000 && pwr++;
+      if (k[83] && map[mR(pr + 1)][pc] != wall) pr = mR(pr + 1);
       //a
-      if (k[65] && map[pr][mC(pc - 1)] != wall) pc = mC(pc - 1), pwr <= 2000 && pwr++;
+      if (k[65] && map[pr][mC(pc - 1)] != wall) pc = mC(pc - 1);
       //d
-      if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1), pwr <= 2000 && pwr++;
+      if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1);
       //forcefield
       if (k[32]) pwr -= 50, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
         return b = mR(pr + b - 3), [].concat(_toConsumableArray(Array(7).keys())).map(function (c, d) {
@@ -96,9 +96,10 @@ pm = setInterval(function (_) {
       });
     }
   }
+  pwr < 2000 && !(k[87] || k[83] || k[65] || k[68]) && pwr++;
 
   //enemy
-  if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr += 100;else {
+  if (die) ec = mc / 2 | 0, er = mr / 2 | 0, die = 0, pwr < 2000 && (pwr += 500);else {
     r = Math.random() * 100 | 0;
     //up
     if (r >= 0 && r < 10) er--;
