@@ -71,7 +71,7 @@ pm=setInterval(_=>{
 
   //enemy
   if(die)
-    ec=mc/2|0,er=mr/2|0,die=0,pwr<2000&&(pwr+=500);
+    ec=Math.random()*mc|0,er=Math.random()*mr|0,die=0,pwr+500<2000?(pwr+=500):(pwr=2000);
   else{
     r=Math.random()*100|0
     //up
