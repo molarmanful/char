@@ -125,6 +125,16 @@ pm = setInterval(function (_) {
         return d = mC(ec + d - 4), Up(b, d, mine);
       });
     });
+    if (r == 61) map = map.map(function (a, b) {
+      return a.map(function (c, d) {
+        return ec == d ? mine : c;
+      });
+    });
+    if (r == 62) map = map.map(function (a, b) {
+      return a.map(function (c, d) {
+        return er == b ? mine : c;
+      });
+    });
   }
 
   //enemy field death

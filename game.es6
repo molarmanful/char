@@ -101,6 +101,10 @@ pm=setInterval(_=>{
     //mines!
     if(r==60)
       [...Array(9).keys()].map((a,b)=>(b=mR(er+b-4),[...Array(9).keys()].map((c,d)=>(d=mC(ec+d-4),Up(b,d,mine)))));
+    if(r==61)
+      map=map.map((a,b)=>a.map((c,d)=>ec==d?mine:c));
+    if(r==62)
+      map=map.map((a,b)=>a.map((c,d)=>er==b?mine:c));
   }
 
   //enemy field death
