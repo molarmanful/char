@@ -1,10 +1,10 @@
 //init
 var floor=` `
-wall=`▓`
+wall=`╬`
 player=`@`
 enemy=`&`
 field=`+`
-mine=`ø`
+mine=`o`
 pc=0
 pr=0
 mc=120

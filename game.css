@@ -4,8 +4,8 @@ body {
   color: #ccc;
 }
 body pre {
-  font-family: Courier New;
   font-size: 13px;
+  font-family: dvsm;
 }
 body a {
   color: #fff;
@@ -15,7 +15,7 @@ body #x {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  text-align: left;
 }
 body #y {
   bottom: 1%;
@@ -29,8 +29,8 @@ body #y {
 body #y #z {
   width: 1000px;
   height: 10px;
+  font-family: dvsm;
   font-size: 10px;
-  font-family: Courier New;
   background-color: #008000;
 }
 body .logo {
@@ -38,6 +38,7 @@ body .logo {
   position: absolute;
   bottom: 55%;
   left: 50%;
+  font-family: Courier New;
   transform: translateX(-50%);
 }
 body .start {
