@@ -1,9 +1,9 @@
 //init
 var floor=` `
-wall=`╬`
+wall=`█`
 player=`@`
 enemy=`&`
-field=`+`
+field=`╬`
 mine=`o`
 pc=0
 pr=0
