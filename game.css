@@ -16,6 +16,7 @@ body #x {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  line-height: 0.99em;
 }
 body #y {
   bottom: 1%;
