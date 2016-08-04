@@ -6,7 +6,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 //init
-var floor = ' ';
+floor = ' ';
 wall = '█';
 player = '@';
 enemy = '&';

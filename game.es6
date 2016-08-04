@@ -1,5 +1,5 @@
 //init
-var floor=` `
+floor=` `
 wall=`█`
 player=`@`
 enemy=`&`
