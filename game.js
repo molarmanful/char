@@ -78,7 +78,12 @@ onkeyup = function onkeyup(e) {
 
 //movements
 pm = setInterval(function (_) {
-  //max pwr is 2000
+  //field reset
+  map = map.map(function (a) {
+    return a.map(function (b) {
+      return b == field ? Math.random() * 2 | 0 ? wall : floor : b;
+    });
+  });
   //make sure keydown
   if (Object.getOwnPropertyNames(k).length) {
     //player
@@ -92,7 +97,7 @@ pm = setInterval(function (_) {
       //d
       if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1);
       //forcefield
-      if (k[32]) pwr *= .75, pwr |= 0, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
+      if (k[32]) pwr -= 10, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
         return b = mR(pr + b - 3), [].concat(_toConsumableArray(Array(7).keys())).map(function (c, d) {
           return d = mC(pc + d - 3), Up(b, d, field);
         });
@@ -114,9 +119,9 @@ pm = setInterval(function (_) {
     //teleport
     if (r >= 50 && r < 55 && score > 30) er = pr + Math.random() * 9 | 0 * (Math.random() * -2 | 0), ec = pc + Math.random() * 9 | 0 * (Math.random() * -2 | 0);
     //map change
-    if (r == 55) map = map.map(function (a, b) {
-      return a.map(function (c, d) {
-        return c == floor || c == wall || c == field || c == mine ? Math.random() * 2 | 0 && Math.random() * 2 | 0 ? wall : floor : c;
+    if (r == 55) [].concat(_toConsumableArray(Array(11).keys())).map(function (a, b) {
+      return b = mR(er + b - 5), [].concat(_toConsumableArray(Array(11).keys())).map(function (c, d) {
+        return d = mC(ec + d - 5), Up(b, d, Math.random() * 2 | 0 ? wall : floor);
       });
     });
     //mines!
