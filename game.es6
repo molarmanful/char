@@ -46,7 +46,7 @@ onkeyup=e=>k[e.which]=0
 //movements
 pm=setInterval(_=>{
   //field reset
-  map=map.map(a=>a.map(b=>b==field?Math.random()*2|0?wall:floor:b))
+  map=map.map(a=>a.map(b=>b==field?Math.random()*4|0?floor:wall:b))
   //make sure keydown
   if(Object.getOwnPropertyNames(k).length){
     //player
@@ -98,7 +98,7 @@ pm=setInterval(_=>{
       ec=pc+(Math.random()*9)|0*(Math.random()*-2|0);
     //map change
     if(r==55)
-      [...Array(11).keys()].map((a,b)=>(b=mR(er+b-5),[...Array(11).keys()].map((c,d)=>(d=mC(ec+d-5),Up(b,d,Math.random()*2|0?wall:floor)))));
+      [...Array(11).keys()].map((a,b)=>(b=mR(er+b-5),[...Array(11).keys()].map((c,d)=>(d=mC(ec+d-5),Up(b,d,Math.random()*4|0?floor:wall)))));
     //mines!
     if(r==60)
       [...Array(9).keys()].map((a,b)=>(b=mR(er+b-4),[...Array(9).keys()].map((c,d)=>(d=mC(ec+d-4),Up(b,d,mine)))));

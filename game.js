@@ -81,7 +81,7 @@ pm = setInterval(function (_) {
   //field reset
   map = map.map(function (a) {
     return a.map(function (b) {
-      return b == field ? Math.random() * 2 | 0 ? wall : floor : b;
+      return b == field ? Math.random() * 4 | 0 ? floor : wall : b;
     });
   });
   //make sure keydown
@@ -121,7 +121,7 @@ pm = setInterval(function (_) {
     //map change
     if (r == 55) [].concat(_toConsumableArray(Array(11).keys())).map(function (a, b) {
       return b = mR(er + b - 5), [].concat(_toConsumableArray(Array(11).keys())).map(function (c, d) {
-        return d = mC(ec + d - 5), Up(b, d, Math.random() * 2 | 0 ? wall : floor);
+        return d = mC(ec + d - 5), Up(b, d, Math.random() * 4 | 0 ? floor : wall);
       });
     });
     //mines!
