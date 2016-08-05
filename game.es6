@@ -31,7 +31,7 @@ up=(R,C,p)=>map=map.map((a,b)=>a.map((c,d)=>b^R||d^C?c==p?floor:c:p))
 Up=(R,C,p)=>map=map.map((a,b)=>a.map((c,d)=>b^R||d^C?c:p))
 
 //init walls
-map=map.map((a,b)=>a.map((c,d)=>Math.random()*2|0&&Math.random()*2|0?wall:c))
+map=map.map((a,b)=>a.map((c,d)=>Math.random()*4|0?wall:c))
 
 //init map
 up(pr,pc,player)
