@@ -97,7 +97,7 @@ pm = setInterval(function (_) {
       //d
       if (k[68] && map[pr][mC(pc + 1)] != wall) pc = mC(pc + 1);
       //forcefield
-      if (k[32]) pwr -= 10, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
+      if (k[32]) pwr -= 25, [].concat(_toConsumableArray(Array(7).keys())).map(function (a, b) {
         return b = mR(pr + b - 3), [].concat(_toConsumableArray(Array(7).keys())).map(function (c, d) {
           return d = mC(pc + d - 3), Up(b, d, field);
         });

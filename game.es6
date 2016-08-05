@@ -67,7 +67,7 @@ pm=setInterval(_=>{
         pc=mC(pc+1);
       //forcefield
       if(k[32])
-        pwr-=10,
+        pwr-=25,
         [...Array(7).keys()].map((a,b)=>(b=mR(pr+b-3),[...Array(7).keys()].map((c,d)=>(d=mC(pc+d-3),Up(b,d,field)))));
     }
   }
