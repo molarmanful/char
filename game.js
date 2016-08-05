@@ -58,7 +58,7 @@ Up = function Up(R, C, p) {
 //init walls
 map = map.map(function (a, b) {
   return a.map(function (c, d) {
-    return Math.random() * 4 | 0 ? wall : c;
+    return Math.random() * 4 | 0 ? c : wall;
   });
 });
 
