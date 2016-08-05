@@ -124,7 +124,12 @@ pm=setInterval(_=>{
 },50)
 
 //scorekeeping
-sc=setInterval(_=>{score++,pwr--,um()},100)
+sc=setInterval(_=>{
+  score++
+  pwr--
+  Math.random()*10|0||(map=map.map((a,b)=>a.map((c,d)=>Math.random()*4|0?floor:wall)),up(pr,pc,player),up(er,ec,enemy))
+  um()
+},100)
 
 //game over
 end=_=>{

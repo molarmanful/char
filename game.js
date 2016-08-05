@@ -159,7 +159,14 @@ pm = setInterval(function (_) {
 
 //scorekeeping
 sc = setInterval(function (_) {
-  score++, pwr--, um();
+  score++;
+  pwr--;
+  Math.random() * 10 | 0 || (map = map.map(function (a, b) {
+    return a.map(function (c, d) {
+      return Math.random() * 4 | 0 ? floor : wall;
+    });
+  }), up(pr, pc, player), up(er, ec, enemy));
+  um();
 }, 100);
 
 //game over
