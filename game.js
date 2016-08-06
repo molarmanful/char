@@ -161,7 +161,7 @@ pm = setInterval(function (_) {
 sc = setInterval(function (_) {
   score++;
   pwr--;
-  Math.random() * 10 | 0 || (map = map.map(function (a, b) {
+  Math.random() * 100 | 0 || (map = map.map(function (a, b) {
     return a.map(function (c, d) {
       return Math.random() * 4 | 0 ? floor : wall;
     });
